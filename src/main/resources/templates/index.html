@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Example</title>
+</head>
+<body>
+<h1>Welcome, <span th:text="${name}">User</span>!</h1>
+<a th:href="@{/customer/register}">고객 생성</a>
+</body>
+</html>
