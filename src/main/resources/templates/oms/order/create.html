@@ -14,15 +14,15 @@
 </div>
 
 <!-- 주문 등록 폼 -->
-<form action="/order/create" method="post">
+<form action="/order/create" method="post" th:object="${order}">
     <div>
         <label for="orderDate">Order Date:</label>
         <input type="datetime-local" id="orderDate" name="orderDate" required>
     </div>
-    <select th:field="*{customers}">
+    <select th:field="*{customer}">
         <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
     </select>
-    <select th:field="*{products}">
+    <select th:field="*{product}">
         <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
     </select>
     <div>

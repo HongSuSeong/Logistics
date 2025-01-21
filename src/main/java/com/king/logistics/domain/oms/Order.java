@@ -4,8 +4,10 @@ import com.king.logistics.domain.oms.enums.OrderStatus;
 import com.king.logistics.domain.tms.Shipment;
 import com.king.logistics.domain.wms.Packaging;
 import com.king.logistics.domain.wms.Picking;
+import com.king.logistics.domain.wms.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -15,6 +17,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "orders")
 public class Order {
 
@@ -50,4 +53,12 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Shipment> shipments;
+
+    public Order(Long orderId, LocalDateTime orderDate, int quantity, OrderStatus orderStatus, Customer customer, BigDecimal price) {
+        this.id = orderId;
+        this.orderDate = orderDate;
+        this.totalAmount = BigDecimal.valueOf(quantity);
+        this.orderStatus = orderStatus;
+        this.customer = customer;
+    }
 }

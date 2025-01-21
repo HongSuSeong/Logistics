@@ -20,7 +20,6 @@ public class ProductController {
 
     private final ProductService productService;
     private final SupplierService supplierService;
-    private final CustomerService customerService;
     @GetMapping("/list")
     public String list(Model model) {
         model.addAttribute("products",productService.list());
@@ -30,7 +29,6 @@ public class ProductController {
     @GetMapping("/create")
     public String createForm(Model model) {
         model.addAttribute("product", new ProductCreateForm());
-        model.addAttribute("customers", customerService.list());
         model.addAttribute("suppliers", supplierService.list());
         return "/wms/product/create";
     }
