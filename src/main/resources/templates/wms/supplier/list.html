@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier List</title>
+</head>
+<body>
+<h1>Supplier List</h1>
+
+<!-- 성공 메시지 -->
+<div th:if="${param.success}">
+    <p style="color: green;">Supplier successfully created!</p>
+</div>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>ContactInfo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="supplier : ${suppliers}">
+        <td th:text="${supplier.id}">1</td>
+        <td th:text="${supplier.name}">Sample Name</td>
+        <td th:text="${supplier.contactInfo}">Sample Description</td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/supplier/create">Create New supplier</a>
+</body>
+</html>

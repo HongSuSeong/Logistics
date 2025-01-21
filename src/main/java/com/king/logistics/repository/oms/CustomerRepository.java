@@ -1,4 +1,4 @@
-package com.king.logistics.repository.common;
+package com.king.logistics.repository.oms;
 
 import com.king.logistics.domain.oms.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

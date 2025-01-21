@@ -10,7 +10,7 @@
 <h2>Customer Registration</h2>
 
 <!-- 등록 폼 -->
-<form action="/customer/register" method="post">
+<form action="/customer/create" method="post">
     <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" th:value="${customer.name}" required>
@@ -22,8 +22,8 @@
     </div>
 
     <div>
-        <label for="phoneNumber">Phone Number</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" th:value="${customer.phoneNumber}" required>
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" th:value="${customer.phone}" required>
     </div>
 
     <div>

@@ -13,7 +13,10 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
-    public List<Order> searchOrder() {
+    public List<Order> OrderList() {
         return orderRepository.findAll();
+    }
+
+    public void OrderSave() {
     }
 }

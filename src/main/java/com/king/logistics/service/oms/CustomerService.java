@@ -1,9 +1,11 @@
-package com.king.logistics.service.common;
+package com.king.logistics.service.oms;
 
 import com.king.logistics.domain.oms.Customer;
-import com.king.logistics.repository.common.CustomerRepository;
+import com.king.logistics.repository.oms.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -13,5 +15,9 @@ public class CustomerService {
 
     public void createCustomer(Customer customer) {
         customerRepository.save(customer);
+    }
+
+    public List<Customer> list() {
+        return customerRepository.findAll();
     }
 }

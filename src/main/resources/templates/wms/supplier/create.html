@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Supplier</title>
+</head>
+<body>
+<h1>Create Supplier</h1>
+
+<!-- 성공 메시지 -->
+<div th:if="${param.success}">
+    <p style="color: green;">Supplier created successfully!</p>
+</div>
+
+<form action="/supplier/create" method="post" th:object="${supplier}">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name= "name" required>
+    </div>
+    <div>
+        <label for="contactInfo">ContactInfo:</label>
+        <textarea id="contactInfo" name="contactInfo" required></textarea>
+    </div>
+    <button type="submit">Create Supplier</button>
+</form>
+
+<a href="/supplier/list">Back to Supplier List</a>
+</body>
+</html>
