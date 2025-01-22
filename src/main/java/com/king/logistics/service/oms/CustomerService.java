@@ -12,11 +12,9 @@ import java.util.List;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
-
     public void createCustomer(Customer customer) {
         customerRepository.save(customer);
     }
-
     public List<Customer> list() {
         return customerRepository.findAll();
     }

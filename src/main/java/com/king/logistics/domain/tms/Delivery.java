@@ -1,5 +1,6 @@
 package com.king.logistics.domain.tms;
 
+import com.king.logistics.domain.com.BaseEntity;
 import com.king.logistics.domain.tms.enums.DeliveryStatus;
 import com.king.logistics.domain.tms.enums.ShipmentStatus;
 import jakarta.persistence.*;
@@ -12,11 +13,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Delivery {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="delivery_id")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name ="delivery_id"))
+public class Delivery extends BaseEntity {
 
     private LocalDateTime deliveryDate;
 

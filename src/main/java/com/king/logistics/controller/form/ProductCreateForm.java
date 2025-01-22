@@ -16,6 +16,6 @@ public class ProductCreateForm {
     private Supplier supplier;
 
     public Product toEntity() {
-        return new Product(null,name,description,price,supplier);
+        return new Product(name,description,price,supplier);
     }
 }

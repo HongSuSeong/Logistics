@@ -1,5 +1,6 @@
 package com.king.logistics.domain.oms;
 
+import com.king.logistics.domain.com.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,12 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Customer {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="customer_id")
-    private Long id;
-
+@AttributeOverride(name = "id", column = @Column(name = "customer_id"))
+public class Customer extends BaseEntity {
     private String name;
 
     private String email;
@@ -28,18 +25,8 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
-
-    public Customer(Long id, String name, String email, String phone, String address, List<Order> orders) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.orders = orders;
-    }
-
-    public Customer(Long id, String name, String email, String phone, String address) {
-        this.id = id;
+    
+    public Customer(String name, String email, String phone, String address) {
         this.name = name;
         this.email = email;
         this.phone = phone;

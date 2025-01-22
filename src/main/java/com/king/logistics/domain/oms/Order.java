@@ -1,5 +1,7 @@
 package com.king.logistics.domain.oms;
 
+import com.king.logistics.controller.form.OrderDetailCreateForm;
+import com.king.logistics.domain.com.BaseEntity;
 import com.king.logistics.domain.oms.enums.OrderStatus;
 import com.king.logistics.domain.tms.Shipment;
 import com.king.logistics.domain.wms.Packaging;
@@ -19,11 +21,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Table(name = "orders")
-public class Order {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="order_id")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name="order_id"))
+public class Order extends BaseEntity {
 
     @Column(nullable = false)
     private LocalDateTime orderDate;
@@ -53,12 +52,4 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Shipment> shipments;
-
-    public Order(Long orderId, LocalDateTime orderDate, int quantity, OrderStatus orderStatus, Customer customer, BigDecimal price) {
-        this.id = orderId;
-        this.orderDate = orderDate;
-        this.totalAmount = BigDecimal.valueOf(quantity);
-        this.orderStatus = orderStatus;
-        this.customer = customer;
-    }
 }

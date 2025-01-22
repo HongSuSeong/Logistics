@@ -32,9 +32,10 @@ public class SupplierController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute("supplier") SupplierCreateForm form) {
+    public String create(Model model,@ModelAttribute("supplier") SupplierCreateForm form) {
         Supplier supplier = form.toEntity();
         supplierService.create(supplier);
+        model.addAttribute("suppliers", supplierService.list());
         return "/wms/supplier/list";
     }
 }

@@ -1,5 +1,6 @@
 package com.king.logistics.domain.tms;
 
+import com.king.logistics.domain.com.BaseEntity;
 import com.king.logistics.domain.oms.Order;
 import com.king.logistics.domain.tms.enums.ShipmentStatus;
 import com.king.logistics.domain.wms.Warehouse;
@@ -13,11 +14,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Shipment {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="shipment_id")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name="shipment_id"))
+public class Shipment extends BaseEntity {
 
     private LocalDateTime shipmentDate;
 

@@ -15,19 +15,13 @@
 
 <!-- 주문 등록 폼 -->
 <form action="/order/create" method="post" th:object="${order}">
+    <select th:field="*{customer}">
+        <option value="">==고객명 선택==</option>
+        <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+    </select>
     <div>
         <label for="orderDate">Order Date:</label>
         <input type="datetime-local" id="orderDate" name="orderDate" required>
-    </div>
-    <select th:field="*{customer}">
-        <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
-    </select>
-    <select th:field="*{product}">
-        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
-    </select>
-    <div>
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" required>
     </div>
     <div>
         <label for="orderStatus">Order Status:</label>
@@ -37,10 +31,58 @@
             <option value="COMPLETED">COMPLETED</option>
         </select>
     </div>
+    <div id="productList">
+        <!-- 동적으로 상품 추가 -->
+        <div>
+            <label>Product:</label>
+            <select name="orderDetails[0].productId">
+                <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
+            </select>
+            <label>Quantity:</label>
+            <input type="number" name="orderDetails[0].quantity" min="1" required>
+        </div>
+    </div>
+    <!-- beforeend-->
+    <button type="button" th:onclick="addProduct()">Add Product</button>
     <button type="submit">Register Order</button>
 </form>
+<script th:inline="javascript">
+    let index = 1;
+
+    // Thymeleaf를 통해 products 데이터를 JSON 형식으로 변환
+    const products = [[${products}]];
+    function addProduct() {
+        const productList = document.getElementById('productList');
+        let options = "";
+
+        // products 배열을 순회하며 <option> 생성
+        products.forEach(product => {
+            options += `<option value="${product.id}">${product.name}</option>`;
+        });
+
+        const newProduct = `
+            <div id = "selectProduct"+[${index}]>
+                <label>Product:</label>
+                <select name="orderDetails[${index}].productId">
+                    ${options}
+                </select>
+                <label>Quantity:</label>
+                <input type="number" name="orderDetails[${index}].quantity" min="1" required>
+            </div>
+            <button type="button" th:onclick="deleteProduct(${index})">Delete Product</button>`;
+        productList.insertAdjacentHTML('beforeend', newProduct);
+        index++;
+    }
+
+    function deleteProduct(index) {
+        const product = document.getElementById(selectProduct+index);
+        product.remove();
+    }
+
+</script>
 
 <!-- 돌아가기 버튼 -->
 <a href="/order/list">Back to Orders List</a>
 </body>
+
 </html>

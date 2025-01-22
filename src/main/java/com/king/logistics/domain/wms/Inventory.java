@@ -1,5 +1,6 @@
 package com.king.logistics.domain.wms;
 
+import com.king.logistics.domain.com.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,11 +8,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Inventory {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="inventory_id")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name="inventory_id"))
+public class Inventory extends BaseEntity {
 
     private int quantity;
 

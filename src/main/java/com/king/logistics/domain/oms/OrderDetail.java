@@ -1,5 +1,6 @@
 package com.king.logistics.domain.oms;
 
+import com.king.logistics.domain.com.BaseEntity;
 import com.king.logistics.domain.wms.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,12 +11,8 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
-public class OrderDetail {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="orderDetail_id")
-    private Long id;
+@AttributeOverride(name = "id" ,column = @Column(name="orderDetail_id"))
+public class OrderDetail extends BaseEntity {
 
     private int quantity;
 

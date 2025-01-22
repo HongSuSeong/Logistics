@@ -11,6 +11,6 @@ public class SupplierCreateForm {
     private String contactInfo;
 
     public Supplier toEntity() {
-        return new Supplier(null, name, contactInfo);
+        return new Supplier(name, contactInfo);
     }
 }

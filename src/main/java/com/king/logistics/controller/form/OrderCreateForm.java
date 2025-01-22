@@ -16,12 +16,7 @@ import java.util.List;
 @Setter
 public class OrderCreateForm {
     private LocalDateTime orderDate;
-    private int quantity;
     private OrderStatus orderStatus;
     private Customer customer;
-    private BigDecimal price;
-
-    public Order toEntity() {
-        return new Order(null, orderDate, quantity, orderStatus, customer, price);
-    }
+    private List<OrderDetailCreateForm> orderDetails;
 }

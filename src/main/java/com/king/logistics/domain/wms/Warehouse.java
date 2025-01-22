@@ -1,5 +1,6 @@
 package com.king.logistics.domain.wms;
 
+import com.king.logistics.domain.com.BaseEntity;
 import com.king.logistics.domain.tms.Shipment;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,11 +11,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Warehouse {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="warehouse_id")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name="warehouse_id"))
+public class Warehouse extends BaseEntity {
 
     private String name;
 

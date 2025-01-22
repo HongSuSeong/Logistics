@@ -7,6 +7,8 @@
 </head>
 <body>
 <h2>Orders List</h2>
+<script th:inline="javascript">
+</script>
 <table>
     <thead>
     <tr>
@@ -19,8 +21,9 @@
     <tbody>
     <tr th:each="order : ${orders}">
         <td th:text="${order.id}"></td>
-        <td th:text="${order.customerName}"></td>
-        <td th:text="${order.status}"></td>
+        <td th:text="${order.customer.name}"></td>
+        <td th:text="${order.orderStatus}"></td>
+        <td th:text="${order.totalAmount}"></td>
         <td>
             <a th:href="@{/orders/{id}(id=${order.id})}">View Details</a>
         </td>
@@ -29,6 +32,6 @@
 </table>
 
 <a th:href="@{/order/create}">주문 생성</a>
-
+<a href="/">Home</a>
 </body>
 </html>

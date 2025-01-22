@@ -34,9 +34,10 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute("product") ProductCreateForm form) {
+    public String create(Model model, @ModelAttribute("product") ProductCreateForm form) {
         Product product = form.toEntity();
         productService.create(product);
+        model.addAttribute("products", productService.list());
         return "/wms/product/list";
     }
 }

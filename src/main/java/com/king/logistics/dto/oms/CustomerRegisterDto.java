@@ -14,6 +14,6 @@ public class CustomerRegisterDto {
     private String address;
 
     public Customer toEntity() {
-        return new Customer(null,name,email,phone,address);
+        return new Customer(name,email,phone,address);
     }
 }

@@ -1,5 +1,6 @@
 package com.king.logistics.domain.wms;
 
+import com.king.logistics.domain.com.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Product {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="product_id")
-    private Long id;
+@AttributeOverride(name = "id", column = @Column(name="product_id"))
+public class Product extends BaseEntity {
 
     private String name;
 
@@ -31,8 +29,7 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inventory> inventories;
 
-    public Product(Long id, String name, String description, BigDecimal price, Supplier supplier) {
-        this.id = id;
+    public Product(String name, String description, BigDecimal price, Supplier supplier) {
         this.name = name;
         this.description = description;
         this.price = price;
