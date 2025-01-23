@@ -2,6 +2,16 @@ spring:
   application:
     name: Logistics
 
+  web:
+    resources:
+      cache:
+        period: 3600
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths: /**
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://138.2.121.208:3306/DB

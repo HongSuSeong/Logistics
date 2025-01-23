@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{com/layout}"
+                layout:fragment="content">
 <head>
-    <title>Home</title>
+    <title>Logistics System</title>
 </head>
 <body>
-<h1>Welcome, <span th:text="${name}">User</span>!</h1>
+<!-- 전체 컨테이너 -->
+<div class="container">
+        <!-- 메인 콘텐츠 -->
+        <main class="main">
+            <h2>Welcome to the Logistics System</h2>
+            <p>Select an option from the menu to get started.</p>
+        </main>
+    </div>
+</div>
+</body>
+</html>
+
+
+<!--<h1>Welcome, <span th:text="${name}">User</span>!</h1>
 <a th:href="@{/customer/create}">고객 생성</a>
 <a th:href="@{/order/list}">주문 조회</a>
 <a th:href="@{/product/list}">상품 조회</a>
-<a th:href="@{/supplier/list}">공급자 조회</a>
-</body>
-</html>
+<a th:href="@{/supplier/list}">공급자 조회</a>-->

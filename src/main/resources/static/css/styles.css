@@ -1,0 +1,89 @@
+/* 기본 설정 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f9;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 헤더 */
+.header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    flex-shrink: 0;
+}
+
+/* 레이아웃 (헤더 아래에 사이드바와 메인) */
+.layout {
+    display: flex;
+    flex: 1; /* 화면의 나머지를 채움 */
+    overflow: hidden;
+}
+
+/* 사이드바 */
+.sidebar {
+    background-color: #555;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* 메인 콘텐츠 */
+.main {
+    flex: 1; /* 사이드바를 제외한 나머지 공간 채움 */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.main h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.main p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+}

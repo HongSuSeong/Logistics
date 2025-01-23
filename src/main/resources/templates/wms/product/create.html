@@ -1,38 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{com/layout}"
+                layout:fragment="content">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Product</title>
 </head>
 <body>
-<h1>Create Product</h1>
+    <div class="container">
+        <h1>Create Product</h1>
 
-<!-- 성공 메시지 -->
-<div th:if="${param.success}">
-    <p style="color: green;">Product created successfully!</p>
-</div>
+        <!-- 성공 메시지 -->
+        <div th:if="${param.success}">
+            <p style="color: green;">Product created successfully!</p>
+        </div>
 
-<form action="/product/create" method="post" th:object="${product}">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name= "name" required>
-    </div>
-    <div>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
-    </div>
-    <div>
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" step="0.01" required>
-    </div>
-    <select th:field="*{supplier}">
-        <option value="">==공급자 선택==</option>
-        <option th:each="supplier : ${suppliers}" th:value="${supplier.id}" th:text="${supplier.name}"></option>
-    </select>
-    <button type="submit">Create Product</button>
-</form>
+        <form action="/product/create" method="post" th:object="${product}">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name= "name" required>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+            <select th:field="*{supplier}">
+                <option value="">==공급자 선택==</option>
+                <option th:each="supplier : ${suppliers}" th:value="${supplier.id}" th:text="${supplier.name}"></option>
+            </select>
+            <button type="submit">Create Product</button>
+        </form>
 
-<a href="/product/list">Back to Product List</a>
+        <a href="/product/list">Back to Product List</a>
+    </div>
 </body>
 </html>
