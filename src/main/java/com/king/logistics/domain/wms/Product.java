@@ -29,6 +29,10 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Inventory> inventories;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Product product;
+
     public Product(String name, String description, BigDecimal price, Supplier supplier) {
         this.name = name;
         this.description = description;

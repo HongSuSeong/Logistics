@@ -1,14 +1,12 @@
 package com.king.logistics.controller.oms;
 
 import com.king.logistics.controller.form.OrderCreateForm;
+import com.king.logistics.controller.form.ProductListFrom;
 import com.king.logistics.domain.oms.Order;
-import com.king.logistics.domain.oms.OrderDetail;
-import com.king.logistics.domain.wms.Product;
 import com.king.logistics.service.oms.CustomerService;
 import com.king.logistics.service.oms.OrderService;
 import com.king.logistics.service.wms.ProductService;
 import lombok.AllArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,11 +34,11 @@ public class OrderController {
 
     @GetMapping("/create")
     public String CreateForm(Model model) {
-        List<ProductDTO> productDTOs = productService.list().stream()
-                .map(product -> new ProductDTO(product.getId(),product.getName()))
+        List<ProductListFrom> productListFroms = productService.list().stream()
+                .map(product -> new ProductListFrom(product.getId(),product.getName()))
                 .toList();
         model.addAttribute("order", new OrderCreateForm());
-        model.addAttribute("products", productDTOs);
+        model.addAttribute("products", productListFroms);
         model.addAttribute("customers", customerService.list());
         return "/oms/order/create";
     }

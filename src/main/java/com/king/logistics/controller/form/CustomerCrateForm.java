@@ -1,4 +1,4 @@
-package com.king.logistics.dto.oms;
+package com.king.logistics.controller.form;
 
 import com.king.logistics.domain.oms.Customer;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CustomerRegisterDto {
+public class CustomerCrateForm {
 
     private String name;
     private String email;

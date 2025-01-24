@@ -10,6 +10,6 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("name", "Logistics System");
-        return "index";
+            return "index";
     }
 }
