@@ -1,11 +1,9 @@
 package com.king.logistics.domain.oms;
 
 import com.king.logistics.domain.com.BaseEntity;
+import com.king.logistics.domain.oms.enums.CustomerAddress;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -25,7 +23,11 @@ public class Customer extends BaseEntity {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
-    
+
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CustomerAddress> addresses;
+
+    @Builder
     public Customer(String name, String email, String phone, String address) {
         this.name = name;
         this.email = email;

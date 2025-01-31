@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.swing.plaf.basic.BasicIconFactory;
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -22,4 +25,10 @@ public class Transport extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "delivery_id", nullable = false)
     private Delivery delivery;
+
+    private BigDecimal estimated_cost;
+
+    private int estimated_time;
+
+    private String priority;
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <nav class="sidebar" th:fragment="sidebar">
+        <ul>
+            <li><a href="/orders">Order Management</a></li>
+            <li><a href="/warehouses">Warehouse Management</a></li>
+            <li><a href="/shipments">Shipment Management</a></li>
+            <li><a href="/products">Product Management</a>
+                <ul>
+                    <li><a href="/product/list">Product List</a></li>
+                    <li><a href="/product/create">Add New Product</a></li>
+                    <li><a href="#">Category Management</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</html>

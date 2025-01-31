@@ -1,17 +1,101 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <nav class="sidebar" th:fragment="sidebar">
-        <ul>
-            <li><a href="/orders">Order Management</a></li>
-            <li><a href="/warehouses">Warehouse Management</a></li>
-            <li><a href="/shipments">Shipment Management</a></li>
-            <li><a href="/products">Product Management</a>
-                <ul>
-                    <li><a href="/product/list">Product List</a></li>
-                    <li><a href="/product/create">Add New Product</a></li>
-                    <li><a href="#">Category Management</a></li>
+<nav th:fragment="sidebar" class="sidebar bg-dark text-white p-3" style="width: 280px; min-height: 100vh;">
+    <!-- 시스템 로고 -->
+    <div class="sidebar-header mb-4">
+        <h4 class="text-center text-primary">
+            <i class="fas fa-truck-fast me-2"></i>Logistics System
+        </h4>
+    </div>
+
+    <!-- 메인 메뉴 -->
+    <ul class="nav nav-pills flex-column">
+        <!-- OMS (Order Management System) -->
+        <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle text-white"
+               data-bs-toggle="collapse"
+               href="#omsMenu"
+               role="button">
+                <i class="fas fa-shopping-cart me-2"></i>
+                주문 관리 (OMS)
+            </a>
+            <div class="collapse" id="omsMenu">
+                <ul class="nav flex-column ps-4">
+                    <li><a href="/order/list" class="nav-link text-white">주문 목록</a></li>
+                    <li><a href="/order/create" class="nav-link text-white">신규 주문</a></li>
+                    <li><a href="/customer/list" class="nav-link text-white">고객 관리</a></li>
+                    <li><a href="/returns" class="nav-link text-white">반품 관리</a></li>
                 </ul>
-            </li>
-        </ul>
-    </nav>
+            </div>
+        </li>
+
+        <!-- WMS (Warehouse Management System) -->
+        <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle text-white"
+               data-bs-toggle="collapse"
+               href="#wmsMenu"
+               role="button">
+                <i class="fas fa-warehouse me-2"></i>
+                창고 관리 (WMS)
+            </a>
+            <div class="collapse" id="wmsMenu">
+                <ul class="nav flex-column ps-4">
+                    <li><a href="/warehouses" class="nav-link text-white">창고 목록</a></li>
+                    <li><a href="/inventory" class="nav-link text-white">재고 현황</a></li>
+                    <li><a href="/inventory/history" class="nav-link text-white">재고 변동 이력</a></li>
+                    <li><a href="/suppliers" class="nav-link text-white">공급업체 관리</a></li>
+                    <li><a href="/products" class="nav-link text-white">상품 관리</a></li>
+                    <li><a href="/categories" class="nav-link text-white">카테고리 관리</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- TMS (Transport Management System) -->
+        <li class="nav-item dropdown mb-2">
+            <a class="nav-link dropdown-toggle text-white"
+               data-bs-toggle="collapse"
+               href="#tmsMenu"
+               role="button">
+                <i class="fas fa-truck me-2"></i>
+                배송 관리 (TMS)
+            </a>
+            <div class="collapse" id="tmsMenu">
+                <ul class="nav flex-column ps-4">
+                    <li><a href="/shipments" class="nav-link text-white">배송 목록</a></li>
+                    <li><a href="/deliveries" class="nav-link text-white">배송 진행 현황</a></li>
+                    <li><a href="/transports" class="nav-link text-white">운송 수단 관리</a></li>
+                    <li><a href="/routes" class="nav-link text-white">배송 경로 관리</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <!-- 리포트 -->
+        <li class="nav-item">
+            <a href="/reports" class="nav-link text-white">
+                <i class="fas fa-chart-line me-2"></i>
+                분석 리포트
+            </a>
+        </li>
+    </ul>
+
+    <!-- 스타일링 -->
+    <style>
+        .sidebar {
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            padding: 12px 15px !important;
+        }
+        .nav-link:hover {
+            background: #2c3e50 !important;
+            transform: translateX(5px);
+        }
+        .collapse ul {
+            border-left: 2px solid #3498db;
+            margin-left: 1rem;
+        }
+    </style>
+</nav>
 </html>

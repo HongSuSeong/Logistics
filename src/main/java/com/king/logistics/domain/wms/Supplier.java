@@ -2,6 +2,7 @@ package com.king.logistics.domain.wms;
 
 import com.king.logistics.domain.com.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class Supplier extends BaseEntity {
     @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 
+    @Builder
     public Supplier(String name, String contactInfo) {
         this.name = name;
         this.contactInfo = contactInfo;

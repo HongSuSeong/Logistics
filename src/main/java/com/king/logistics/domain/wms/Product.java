@@ -1,7 +1,9 @@
 package com.king.logistics.domain.wms;
 
 import com.king.logistics.domain.com.BaseEntity;
+import com.king.logistics.domain.oms.ReturnDetail;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,8 +33,12 @@ public class Product extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    private Product product;
+    private Category category;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ReturnDetail> returnDetails;
+
+    @Builder
     public Product(String name, String description, BigDecimal price, Supplier supplier) {
         this.name = name;
         this.description = description;

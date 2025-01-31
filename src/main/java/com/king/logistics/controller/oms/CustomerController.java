@@ -15,6 +15,12 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
+    @GetMapping("/list")
+    public String list(Model model) {
+        model.addAttribute("customers",customerService.list());
+        return "/oms/customer/list";
+    }
+
     @GetMapping("/create")
     public String register(Model model, @ModelAttribute("customer") CustomerCrateForm customerCrateForm) {
         model.addAttribute("customer", customerCrateForm);

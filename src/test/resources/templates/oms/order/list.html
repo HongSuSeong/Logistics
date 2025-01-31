@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{com/layout}"
-      layout:fragment="content">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +30,8 @@
     </tr>
     </tbody>
 </table>
+
+<a th:href="@{/order/create}">주문 생성</a>
 <a href="/">Home</a>
 </body>
 </html>
